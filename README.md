@@ -48,9 +48,13 @@ Number of items = N = {1,2…19}  //아이템 19개
 Number of Bags = M = {1,2,3,4,5}  //가방 5개
 
 **Parameters (Data)**
+
 아이템에 대한 파라미터
+
 ![item-parameters](image-2.png)
+
 가방에 대한 파라미터
+
 ![knapsack-parameters](image-3.png)
 
 **Decision Variables**
@@ -73,7 +77,7 @@ Number of Bags = M = {1,2,3,4,5}  //가방 5개
 >이 문제에서의 제약조건
 
 * 각 가방의 무게, 부피, 그리고 방사능 수준
-* 하나의 아이템은 5개 가방 중 오직 한 개의 가방에만 있어야 한다.
+* 하나의 아이템은 5개 가방 중 오직 한 개의 가방에만 있어야 한다
 
 *Item Constraint*
 
@@ -91,7 +95,7 @@ Number of Bags = M = {1,2,3,4,5}  //가방 5개
 
 ![volume-constraint](image-7.png) 
 
-각 가방의 부피는 50입방인치를 초과할 수 없다.
+각 가방의 부피는 50입방인치를 초과할 수 없다
 
 *Radiation Constraint*
 
@@ -102,7 +106,7 @@ Number of Bags = M = {1,2,3,4,5}  //가방 5개
 
 **Objective Function**
 
-문제에서는 우리 팀의 유틸리티를 최대화하는 가장 좋은 방법을 찾고자 한다. 
+문제에서는 우리 팀의 유틸리티를 최대화하는 가장 좋은 방법을 찾고자 한다
 
 ![Alt text](image-9.png) 
 
