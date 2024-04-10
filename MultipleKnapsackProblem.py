@@ -3,7 +3,7 @@ from ortools.linear_solver import pywraplp # pywraplp: 선형 프로그래밍 �
 
 solver = solver = pywraplp.Solver.CreateSolver('SCIP')
 
-# 파라미터에 대한 코드
+# Set/Parameters
 
 data = {}
 values = [48, 30, 42, 36, 22, 43, 18, 24, 36, 29, 30, 25, 19, 41, 34, 32, 27, 24, 18]
@@ -33,7 +33,7 @@ print("Number of Items:", data['num_items'])
 print("Number of Knapsacks:" , number_bags)
 print('Knapsack Capacities: 50 Pounds, 50 cubic inches, 5 Levels of Radiation')
 
-# 결정변수
+# Decision variables (결정변수)
 # 아이템 i가 가방 j에 포함되면 1, 안되면 0 
 
 x = {}
@@ -41,6 +41,8 @@ for i in data['items']:
     for j in data['bags']:
         x[(i,j)] = solver.IntVar(0,1,'x_%i_%i' % (i, j)) #solver.IntVar는 google ORTools의 선형 프로그래밍 솔버를 위한 정수형 변수를 생성하는 메서드, 변수명: x_i_j 형태
 
+#constraints
+        
 #Constraint for an item being placed in 1 knapsack (각 item은 하나의 가방에만 있을 수 있다)
 for i in data['items']:
     solver.Add(sum(x[i,j] for j in data['bags'])<=1)
@@ -58,6 +60,7 @@ for j in data['bags']:
                     for i in data['items']) <= data['rad_capacities'][j])
     
 #objective function
+    
 objective = solver.Objective() # .Objective: 최적화 문제에서 사용할 목적 함수를 생성
 for i in data['items']:
     for j in data['bags']:
@@ -66,7 +69,7 @@ for i in data['items']:
         # x[(i,j)]는 변수, data['values'][i]는 해당 변수의 계수로 설정
 objective.SetMaximization()
 
-#solve
+# solve 
 solv = solver.Solve() #최적화 문제를 해결하는 메서드
 if solv == pywraplp.Solver.OPTIMAL:
     print("-------------------------solve------------------------------------------")
